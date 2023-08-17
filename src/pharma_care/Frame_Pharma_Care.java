@@ -7,7 +7,7 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         
         initComponents();
     }
-
+//thi com
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
