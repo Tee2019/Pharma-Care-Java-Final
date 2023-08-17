@@ -1,17 +1,18 @@
 package pharma_care;
+
 import javax.swing.JFrame;
 
-public class Frame_Browse extends javax.swing.JFrame 
-{
+public class Frame_Browse extends javax.swing.JFrame {
+
     JFrame mainFrame, previous;
-    
-    public Frame_Browse() 
-    {
+
+    public Frame_Browse(JFrame mainFrame) {
         previous = mainFrame;
         this.mainFrame = mainFrame;
         //previous = mainFrame;
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,7 +79,7 @@ public class Frame_Browse extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     public void switchFrame() {
         this.setVisible(false);
         if (previous != mainFrame) {
@@ -87,7 +88,7 @@ public class Frame_Browse extends javax.swing.JFrame
             mainFrame.setVisible(true);
         }
     }
-    
+
     private void button_back_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_mainActionPerformed
         switchFrame();
     }//GEN-LAST:event_button_back_mainActionPerformed
@@ -95,12 +96,12 @@ public class Frame_Browse extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) 
+//    public static void main(String args[])
 //    {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 //         */
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -127,7 +128,6 @@ public class Frame_Browse extends javax.swing.JFrame
 //            }
 //        });
 //    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_back_main;
     private javax.swing.JLabel jLabel1;

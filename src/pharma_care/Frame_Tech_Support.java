@@ -1,12 +1,12 @@
 package pharma_care;
+
 import javax.swing.JFrame;
 
-public class Frame_Tech_Support extends javax.swing.JFrame 
-{
+public class Frame_Tech_Support extends javax.swing.JFrame {
+
     JFrame adminPanel;
-    
-    public Frame_Tech_Support() 
-    {
+
+    public Frame_Tech_Support(JFrame adminPanel) {
         this.adminPanel = adminPanel;
         initComponents();
     }
@@ -298,13 +298,12 @@ public class Frame_Tech_Support extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void switchFrame() 
-    {
+
+    public void switchFrame() {
         adminPanel.setVisible(true);
         this.setVisible(false);
     }
-    
+
     private void button_back_admin_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_admin_panelActionPerformed
         switchFrame();
     }//GEN-LAST:event_button_back_admin_panelActionPerformed
@@ -316,7 +315,7 @@ public class Frame_Tech_Support extends javax.swing.JFrame
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 //         */
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -343,7 +342,6 @@ public class Frame_Tech_Support extends javax.swing.JFrame
 //            }
 //        });
 //    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_back_admin_panel;
     private javax.swing.JLabel jLabel1;
