@@ -2,6 +2,8 @@ package pharma_care;
 
 public class Frame_Pharma_Care extends javax.swing.JFrame {
     Frame_Admin_Login admin;
+    Frame_Search search;
+    Frame_Contact_Us contactus;
 
     public Frame_Pharma_Care() {
         
@@ -24,7 +26,6 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         button_browse = new javax.swing.JButton();
         button_order = new javax.swing.JButton();
         button_contact = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +44,11 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         jLabel2.setText("Main Menu");
 
         button_search.setText("Search");
+        button_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_searchActionPerformed(evt);
+            }
+        });
 
         button_browse.setText("Browse");
         button_browse.addActionListener(new java.awt.event.ActionListener() {
@@ -54,8 +60,11 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         button_order.setText("Order Now");
 
         button_contact.setText("Contact Us");
-
-        jButton1.setText("Back");
+        button_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_contactActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,11 +85,7 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
                             .addComponent(button_order, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_admin_login, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 147, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,26 +104,39 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
                 .addComponent(button_contact)
                 .addGap(34, 34, 34)
                 .addComponent(button_admin_login)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_admin_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_admin_loginActionPerformed
+    private void button_admin_loginActionPerformed(java.awt.event.ActionEvent evt) {                                                   
     if (admin==null)
         admin = new Frame_Admin_Login(this);
     this.setVisible(false);
     admin.setVisible(true);
+    }                                                  
     
 // TODO add your handling code here:
-    }//GEN-LAST:event_button_admin_loginActionPerformed
+                                                      
 
     private void button_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_browseActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_button_browseActionPerformed
+
+    private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
+           if(search == null)
+               search = new Frame_Search(this);
+           this.setVisible(false);
+           search.setVisible(true);
+    }//GEN-LAST:event_button_searchActionPerformed
+
+    private void button_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_contactActionPerformed
+        if(contactus == null)
+            contactus = new Frame_Contact_Us(this);
+        this.setVisible(false);
+        contactus.setVisible(true);
+    }//GEN-LAST:event_button_contactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,7 +179,6 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
     private javax.swing.JButton button_contact;
     private javax.swing.JButton button_order;
     private javax.swing.JButton button_search;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
