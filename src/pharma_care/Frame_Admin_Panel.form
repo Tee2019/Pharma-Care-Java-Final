@@ -24,22 +24,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_add" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_edit_delete" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_browse" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_search" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_sales_record" alignment="1" max="32767" attributes="0"/>
-                  <Component id="button_tech_support" alignment="1" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_add" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_edit_delete" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_browse" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_search" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_sales_record" alignment="1" max="32767" attributes="0"/>
+                          <Component id="button_tech_support" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="button_logout" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="128" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="button_logout" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,6 +93,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Browse"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_browseActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_search">
       <Properties>
@@ -105,11 +111,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tech-Support"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_tech_supportActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_logout">
       <Properties>
         <Property name="text" type="java.lang.String" value="Log out"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_logoutActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

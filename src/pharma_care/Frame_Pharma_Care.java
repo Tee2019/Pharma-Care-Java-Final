@@ -122,7 +122,10 @@ public class Frame_Pharma_Care extends javax.swing.JFrame
     }                                                 
 
     private void button_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_browseActionPerformed
-       
+       if(browse == null)
+           browse = new Frame_Browse(this);
+        this.setVisible(false);
+        browse.setVisible(true);
     }//GEN-LAST:event_button_browseActionPerformed
 
     private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed

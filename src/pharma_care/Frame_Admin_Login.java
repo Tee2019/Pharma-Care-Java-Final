@@ -10,6 +10,7 @@ public class Frame_Admin_Login extends javax.swing.JFrame
         initComponents();
     }
     JFrame mainFrame;
+    JFrame adminPanel;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,7 +145,11 @@ public class Frame_Admin_Login extends javax.swing.JFrame
     }//GEN-LAST:event_button_back_mainActionPerformed
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        // TODO add your handling code here:
+        if (adminPanel == null) {
+            adminPanel = new Frame_Admin_Panel(this);
+        }
+        this.setVisible(false);
+        adminPanel.setVisible(true);
     }//GEN-LAST:event_button_loginActionPerformed
 
     private void pf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_passwordActionPerformed
