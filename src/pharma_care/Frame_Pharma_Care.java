@@ -1,7 +1,7 @@
 package pharma_care;
 
 public class Frame_Pharma_Care extends javax.swing.JFrame {
-    Frame_Admin admin;
+    Frame_Admin_Login admin;
 
     public Frame_Pharma_Care() {
         
@@ -18,26 +18,28 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        button_admin_panel = new javax.swing.JButton();
+        button_admin_login = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         button_search = new javax.swing.JButton();
         button_browse = new javax.swing.JButton();
         button_order = new javax.swing.JButton();
         button_contact = new javax.swing.JButton();
-        button_exit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("PHARMA CARE");
 
-        button_admin_panel.setText("Admin Panel");
-        button_admin_panel.addActionListener(new java.awt.event.ActionListener() {
+        button_admin_login.setText("Admin Login");
+        button_admin_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_admin_panelActionPerformed(evt);
+                button_admin_loginActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Main Menu");
 
         button_search.setText("Search");
@@ -53,46 +55,41 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
 
         button_contact.setText("Contact Us");
 
-        button_exit.setText("Exit");
+        jButton1.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(button_admin_panel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                        .addComponent(button_exit)
-                        .addGap(32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button_contact)
-                            .addComponent(button_order)
-                            .addComponent(button_browse, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_browse, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_order, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_admin_login, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 147, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(button_search)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button_browse)
@@ -100,24 +97,24 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
                 .addComponent(button_order)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button_contact)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_admin_panel)
-                    .addComponent(button_exit))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(button_admin_login)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_admin_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_admin_panelActionPerformed
+    private void button_admin_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_admin_loginActionPerformed
     if (admin==null)
-        admin = new Frame_Admin(this);
+        admin = new Frame_Admin_Login(this);
     this.setVisible(false);
     admin.setVisible(true);
     
 // TODO add your handling code here:
-    }//GEN-LAST:event_button_admin_panelActionPerformed
+    }//GEN-LAST:event_button_admin_loginActionPerformed
 
     private void button_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_browseActionPerformed
         // TODO add your handling code here:
@@ -159,12 +156,12 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_admin_panel;
+    private javax.swing.JButton button_admin_login;
     private javax.swing.JButton button_browse;
     private javax.swing.JButton button_contact;
-    private javax.swing.JButton button_exit;
     private javax.swing.JButton button_order;
     private javax.swing.JButton button_search;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
