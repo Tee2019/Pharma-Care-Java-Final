@@ -2,11 +2,12 @@ package pharma_care;
 
 import javax.swing.JFrame;
 
-public class Frame_Search extends javax.swing.JFrame {
-
+public class Frame_Search extends javax.swing.JFrame
+{
     JFrame mainFrame;
 
-    public Frame_Search(JFrame mainFrame) {
+    public Frame_Search(JFrame mainFrame) 
+    {
         this.mainFrame = mainFrame;
         initComponents();
     }
@@ -95,7 +96,8 @@ public class Frame_Search extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void switchFrame(){
+    public void switchFrame()
+    {
         mainFrame.setVisible(true);
         this.setVisible(false);
     }

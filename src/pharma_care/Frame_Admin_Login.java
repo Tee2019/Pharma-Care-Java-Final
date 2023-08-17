@@ -1,21 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package pharma_care;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author Student
- */
-public class Frame_Admin_Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Frame_Admin
-     */
-    public Frame_Admin_Login(JFrame mainFrame) {
+public class Frame_Admin_Login extends javax.swing.JFrame 
+{
+    public Frame_Admin_Login(JFrame mainFrame) 
+    {
         this.mainFrame = mainFrame;
         initComponents();
     }
@@ -31,10 +21,10 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         button_back_main = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        button_login = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         tf_username = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        check_box_remember = new javax.swing.JCheckBox();
         button_reset_password = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,14 +42,14 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        button_login.setText("Login");
+        button_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                button_loginActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setText("Remember Me");
+        check_box_remember.setText("Remember Me");
 
         button_reset_password.setBackground(new java.awt.Color(242, 242, 242));
         button_reset_password.setForeground(new java.awt.Color(0, 102, 255));
@@ -86,7 +76,7 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(check_box_remember)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(button_reset_password))
                     .addComponent(pf_password)
@@ -106,7 +96,7 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                 .addComponent(pf_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
+                    .addComponent(check_box_remember)
                     .addComponent(button_reset_password))
                 .addContainerGap())
         );
@@ -122,7 +112,7 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
-                        .addComponent(jButton2))
+                        .addComponent(button_login))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,7 +129,7 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(button_login)
                 .addGap(26, 26, 26)
                 .addComponent(button_back_main)
                 .addGap(15, 15, 15))
@@ -153,15 +143,16 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
         switchFrame();
     }//GEN-LAST:event_button_back_mainActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_button_loginActionPerformed
 
     private void pf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pf_passwordActionPerformed
     
-    public void switchFrame(){
+    public void switchFrame()
+    {
         mainFrame.setVisible(true);
         this.setVisible(false);
     }
@@ -202,9 +193,9 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_back_main;
+    private javax.swing.JButton button_login;
     private javax.swing.JButton button_reset_password;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox check_box_remember;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

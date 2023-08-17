@@ -2,9 +2,11 @@ package pharma_care;
 
 import javax.swing.JFrame;
 
-public class Frame_Contact_Us extends javax.swing.JFrame {
+public class Frame_Contact_Us extends javax.swing.JFrame 
+{
     JFrame mainFrame;
-    public Frame_Contact_Us(JFrame mainFrame) {
+    public Frame_Contact_Us(JFrame mainFrame) 
+    {
         this.mainFrame = mainFrame;
         initComponents();
     }
@@ -151,7 +153,8 @@ public class Frame_Contact_Us extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void switchFrame(){
+    public void switchFrame()
+    {
         mainFrame.setVisible(true);
         this.setVisible(false);
     }
