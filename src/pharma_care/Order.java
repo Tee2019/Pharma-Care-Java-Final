@@ -1,6 +1,5 @@
 package pharma_care;
 
-public class Order 
-{
-    
+public class Order {
+
 }

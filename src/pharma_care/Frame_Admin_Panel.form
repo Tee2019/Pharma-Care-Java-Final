@@ -83,11 +83,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_addActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_edit_delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit/Delete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_edit_deleteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_browse">
       <Properties>
