@@ -5,10 +5,13 @@ import javax.swing.*;
 public class Frame_Admin_Panel extends javax.swing.JFrame {
 
     JFrame adminPanel;
+    Frame_Search search;
     Frame_Browse browse;
     Frame_Pharma_Care mainFrame;
     Frame_Tech_Support tech;
-    Frame_Admin_Add addmeds;
+    Frame_Sales sales;
+    Frame_Admin_Edit_Delete edit_delete;
+    Frame_Admin_Add add_meds;
 
     public Frame_Admin_Panel(JFrame adminPanel) {
         this.adminPanel = adminPanel;
@@ -55,8 +58,18 @@ public class Frame_Admin_Panel extends javax.swing.JFrame {
         });
 
         button_search.setText("Search");
+        button_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_searchActionPerformed(evt);
+            }
+        });
 
         button_sales_record.setText("Sales Record");
+        button_sales_record.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_sales_recordActionPerformed(evt);
+            }
+        });
 
         button_tech_support.setText("Tech-Support");
         button_tech_support.addActionListener(new java.awt.event.ActionListener() {
@@ -139,16 +152,36 @@ public class Frame_Admin_Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_button_tech_supportActionPerformed
 
     private void button_edit_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_edit_deleteActionPerformed
-
+        if (edit_delete == null) {
+            edit_delete = new Frame_Admin_Edit_Delete(this);
+        }
+        this.setVisible(false);
+        edit_delete.setVisible(true);
     }//GEN-LAST:event_button_edit_deleteActionPerformed
 
     private void button_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addActionPerformed
-        if (addmeds == null) {
-            addmeds = new Frame_Admin_Add(this);
+        if (add_meds == null) {
+            add_meds = new Frame_Admin_Add(this);
         }
         this.setVisible(false);
-        addmeds.setVisible(true);
+        add_meds.setVisible(true);
     }//GEN-LAST:event_button_addActionPerformed
+
+    private void button_sales_recordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_sales_recordActionPerformed
+        if (sales == null) {
+            sales = new Frame_Sales(this);
+        }
+        this.setVisible(false);
+        sales.setVisible(true);
+    }//GEN-LAST:event_button_sales_recordActionPerformed
+
+    private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
+        if (search == null) {
+            search = new Frame_Search(this);
+        }
+        this.setVisible(false);
+        search.setVisible(true);
+    }//GEN-LAST:event_button_searchActionPerformed
 
     public void switchFrame() {
         mainFrame = new Frame_Pharma_Care();
@@ -156,9 +189,6 @@ public class Frame_Admin_Panel extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    /**
-     * @param args the command line arguments
-     */
 //    public static void main(String args[])
 //    {
 //        /* Set the Nimbus look and feel */

@@ -4,10 +4,9 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
 
     Frame_Search search;
     Frame_Browse browse;
+    Frame_Order order;
     Frame_Contact_Us contactus;
     Frame_Admin_Login adminLogin;
-    Frame_Admin_Panel adminPanel;
-    Frame_Tech_Support techSupport;
 
     public Frame_Pharma_Care() {
         initComponents();
@@ -56,6 +55,11 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         });
 
         button_order.setText("Order Now");
+        button_order.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_orderActionPerformed(evt);
+            }
+        });
 
         button_contact.setText("Contact Us");
         button_contact.addActionListener(new java.awt.event.ActionListener() {
@@ -140,9 +144,14 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         contactus.setVisible(true);
     }//GEN-LAST:event_button_contactActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void button_orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_orderActionPerformed
+        if (order == null) {
+            order = new Frame_Order(this);
+        }
+        this.setVisible(false);
+        order.setVisible(true);
+    }//GEN-LAST:event_button_orderActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -107,11 +107,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_searchActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_sales_record">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sales Record"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_sales_recordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_tech_support">
       <Properties>
