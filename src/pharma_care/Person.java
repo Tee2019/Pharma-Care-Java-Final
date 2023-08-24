@@ -1,8 +1,9 @@
 package pharma_care;
+
 import java.util.*;
 
-public abstract class Person 
-{
+public abstract class Person {
+
     private String name;
 
     public Person(String name) {
@@ -16,6 +17,17 @@ public abstract class Person
     public void setName(String name) {
         this.name = name;
     }
-    
-    public abstract void displayReceipt(ArrayList<User> receipt, int i);
+
+    public int search(String key, ArrayList<Medicine> meds) {
+        int flag = 0;
+        for (Medicine m : meds) {
+            if (m.getMedName().toLowerCase().contains(key.toLowerCase()) == true || m.getDosageForm().toLowerCase().contains(key.toLowerCase()) == true || m.getIndication().toLowerCase().contains(key.toLowerCase()) == true) {
+                m.display();
+                flag++;
+            }
+        }
+        return flag;
+    }
+
+    public abstract void displayReceipt();
 }

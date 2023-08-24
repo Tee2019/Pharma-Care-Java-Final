@@ -39,8 +39,11 @@
                           <Component id="button_browse" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="button_order" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="button_contact" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="button_admin_login" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="button_admin_login" min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="0" pref="146" max="32767" attributes="0"/>

@@ -1,5 +1,11 @@
 package pharma_care;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+import javax.swing.JOptionPane;
+
 public class Frame_Pharma_Care extends javax.swing.JFrame {
 
     Frame_Search search;
@@ -7,6 +13,9 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
     Frame_Order order;
     Frame_Contact_Us contactus;
     Frame_Admin_Login adminLogin;
+    ArrayList<Medicine> meds = new ArrayList<>();
+
+    ;
 
     public Frame_Pharma_Care() {
         initComponents();
@@ -85,8 +94,10 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
                             .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_browse, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_order, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_admin_login, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(button_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(button_admin_login, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,6 +139,9 @@ public class Frame_Pharma_Care extends javax.swing.JFrame {
         browse.setVisible(true);
     }//GEN-LAST:event_button_browseActionPerformed
 
+    public void test() {
+        Collections.addAll(meds, new Medicine("Alatrol", "Cetirize Hydrochloride", "Square Pharmaceuticals Ltd.", "Tablet", "10 mmg", 650.000000, 789, "seasonal and perennial allergic rhinitis"), new Medicine("Napa", "Paracetamol", "Beximco Pharmaceuticals Ltd.", "Tablet", "500 mg", 612.00, 395, "fever, cold"));
+    }
     private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
         if (search == null) {
             search = new Frame_Search(this);

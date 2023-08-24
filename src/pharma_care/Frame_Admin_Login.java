@@ -1,15 +1,23 @@
 package pharma_care;
 
-import javax.swing.JFrame;
+import java.util.*;
+import javax.swing.*;
 
 public class Frame_Admin_Login extends javax.swing.JFrame {
 
-    public Frame_Admin_Login(JFrame mainFrame) {
-        this.mainFrame = mainFrame;
-        initComponents();
-    }
     JFrame mainFrame;
     JFrame adminPanel;
+    JFrame adminLogin;
+    Frame_Get_Code code;
+    ArrayList<Admin> ad = new ArrayList<>();
+    private JFrame reset_password;
+
+    public Frame_Admin_Login(JFrame mainFrame) {
+        //ad = new ArrayList<>();
+        this.mainFrame = mainFrame;
+        initComponents();
+        Admin(ad);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,6 +59,11 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
         button_reset_password.setForeground(new java.awt.Color(0, 102, 255));
         button_reset_password.setText("Forgot Your Password? ");
         button_reset_password.setBorder(null);
+        button_reset_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_reset_passwordActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Username");
 
@@ -107,14 +120,14 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                         .addGap(221, 221, 221)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(button_login))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(button_back_main)))
+                        .addComponent(button_back_main))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(button_login)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,9 +137,9 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button_login)
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addComponent(button_back_main)
                 .addGap(15, 15, 15))
         );
@@ -135,21 +148,46 @@ public class Frame_Admin_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_back_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_mainActionPerformed
-
         switchFrame();
     }//GEN-LAST:event_button_back_mainActionPerformed
 
+    private void Admin(ArrayList<Admin> ad) {
+        Collections.addAll(ad, new Admin("tee", "12345"), new Admin("uzo", "6789"));
+    }
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        if (adminPanel == null) {
-            adminPanel = new Frame_Admin_Panel(this);
+        int flag = 0;
+        String username = tf_username.getText();
+        String password = pf_password.getText();
+        if (tf_username.getText().isEmpty() || pf_password.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Insert username and password");
+        } else {
+            for (Admin x : ad) {
+                if (username.equals(x.getName()) && password.equals(x.getPassword())) {
+                    if (adminPanel == null) {
+                        adminPanel = new Frame_Admin_Panel(this);
+                    }
+                    this.setVisible(false);
+                    adminPanel.setVisible(true);
+                    flag++;
+                    break;
+                }
+            }
+            if (flag == 0) {
+                JOptionPane.showMessageDialog(this, "wrong information!");
+            }
         }
-        this.setVisible(false);
-        adminPanel.setVisible(true);
+
     }//GEN-LAST:event_button_loginActionPerformed
 
     private void pf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pf_passwordActionPerformed
+
+    private void button_reset_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_reset_passwordActionPerformed
+        code = new Frame_Get_Code(this);
+        this.setVisible(false);
+        code.setVisible(true);
+    }//GEN-LAST:event_button_reset_passwordActionPerformed
 
     public void switchFrame() {
         mainFrame.setVisible(true);

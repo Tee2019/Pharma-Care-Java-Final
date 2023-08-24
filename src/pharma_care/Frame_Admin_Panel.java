@@ -5,13 +5,13 @@ import javax.swing.*;
 public class Frame_Admin_Panel extends javax.swing.JFrame {
 
     JFrame adminPanel;
-    Frame_Search search;
-    Frame_Browse browse;
     Frame_Pharma_Care mainFrame;
-    Frame_Tech_Support tech;
-    Frame_Sales sales;
-    Frame_Admin_Edit_Delete edit_delete;
     Frame_Admin_Add add_meds;
+    Frame_Admin_Edit_Delete edit_delete;
+    Frame_Browse browse;
+    Frame_Search search;
+    Frame_Sales sales;
+    Frame_Tech_Support tech;
 
     public Frame_Admin_Panel(JFrame adminPanel) {
         this.adminPanel = adminPanel;

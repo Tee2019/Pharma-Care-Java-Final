@@ -3,28 +3,23 @@ package pharma_care;
 public class Medicine {
 
     private String medName;
-    private String brandName;
     private String manuFacturer;
     private String genericName;
     private String dosageForm;
     private String strength;
-    private int packSize;
-    private double pricePerPack;
-    private double pricePerUnit;
+    private double price;
     private int stock;
     private String indication;
     private int totalSold = 0;
+    private int quantity = 0;
 
-    public Medicine(String medName, String brandName, String manuFacturer, String genericName, String dosageForm, String strength, int packSize, double pricePerPack, int stock, String indication) {
-        this.medName = medName;
-        this.brandName = brandName;
+    public Medicine(String medName, String manuFacturer, String genericName, String dosageForm, String strength, double price, int stock, String indication) {
+        this.medName = medName;;
         this.manuFacturer = manuFacturer;
         this.genericName = genericName;
         this.dosageForm = dosageForm;
         this.strength = strength;
-        this.packSize = packSize;
-        this.pricePerPack = pricePerPack;
-        pricePerUnit = pricePerPack / packSize;
+        this.price = price;
         this.stock = stock;
         this.indication = indication;
     }
@@ -35,14 +30,6 @@ public class Medicine {
 
     public void setMedName(String medName) {
         this.medName = medName;
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public String getManuFacturer() {
@@ -77,28 +64,12 @@ public class Medicine {
         this.strength = strength;
     }
 
-    public int getPackSize() {
-        return packSize;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPackSize(int packSize) {
-        this.packSize = packSize;
-    }
-
-    public double getPricePerPack() {
-        return pricePerPack;
-    }
-
-    public void setPricePerPack(double pricePerPack) {
-        this.pricePerPack = pricePerPack;
-    }
-
-    public double getPricePerUnit() {
-        return pricePerUnit;
-    }
-
-    public void setPricePerUnit(double pricePerUnit) {
-        this.pricePerUnit = pricePerUnit;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getStock() {
@@ -125,6 +96,14 @@ public class Medicine {
         this.totalSold = totalSold;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public void decreaseStock(int amount) {
         stock -= amount;
         totalSold += amount;
@@ -138,14 +117,11 @@ public class Medicine {
     public void display() {
 
         System.out.println("\nMedicine name: " + medName);
-        System.out.println("Brand name: " + brandName);
         System.out.println("Generic name: " + genericName);
         System.out.println("Manufacturing company: " + manuFacturer);
         System.out.println("Dosage form: " + dosageForm);
         System.out.println("Strength : " + strength);
-        System.out.println("pack size: " + packSize);
-        System.out.println("price per pack: " + pricePerPack);
-        System.out.println("price per unit: " + pricePerUnit);
+        System.out.println("price per pack: " + price);
         System.out.println("Stock: " + stock);
         System.out.println("Indication: " + indication);
         System.out.println("Total Sold: " + totalSold);

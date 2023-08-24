@@ -1,0 +1,3 @@
+Napa	Beximco Pharma	Paracetamol	Tablet	500 mg	50.75	232	Fever, Headache
+Maxpro	Renata Ltd.	Esomeprazole	Capsule	20 mg	100.0	353	Acidity
+Actrapid	Eskayef Pharmaceuticals Ltd.	Insulin	Injection	100 IU/ml	500.0	25	Blood suger

@@ -1,13 +1,22 @@
 package pharma_care;
 
 import javax.swing.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.util.*;
+import java.text.*;
+import javax.swing.table.*;
+import java.text.SimpleDateFormat;
 
 public class Frame_Admin_Add extends javax.swing.JFrame {
 
     JFrame adminpanel;
+    ArrayList<Medicine> meds;
 
     public Frame_Admin_Add(JFrame adminpanel) {
         this.adminpanel = adminpanel;
+        meds = new ArrayList<>();
+        init();
         initComponents();
     }
 
@@ -18,32 +27,30 @@ public class Frame_Admin_Add extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         button_back_admin = new javax.swing.JButton();
         button_add = new javax.swing.JButton();
-        tf_price = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         tf_strength = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        tf_stock = new javax.swing.JTextField();
-        combo_box_dosage_form = new javax.swing.JComboBox<>();
-        tf_brand_name = new javax.swing.JTextField();
-        tf_generic_name = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        tf_manufacturer = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ta_indication = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
         tf_med_name = new javax.swing.JTextField();
+        tf_manufacturer = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tf_indication = new javax.swing.JTextField();
+        tf_generic_name = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        combo_box_dosage_form = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tf_price = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        tf_stock = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel11.setText("Add New Medicine");
+        jLabel11.setText("ADD NEW MEDICINE");
 
-        button_back_admin.setText("Cancel");
+        button_back_admin.setText("Cancel/Back");
         button_back_admin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_back_adminActionPerformed(evt);
@@ -51,10 +58,11 @@ public class Frame_Admin_Add extends javax.swing.JFrame {
         });
 
         button_add.setText("Add");
-
-        jLabel9.setText("In Stock");
-
-        jLabel6.setText("Strength");
+        button_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_addActionPerformed(evt);
+            }
+        });
 
         tf_strength.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,13 +70,33 @@ public class Frame_Admin_Add extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Medicine Name");
+        jLabel8.setText("Price");
 
-        tf_stock.addActionListener(new java.awt.event.ActionListener() {
+        jLabel10.setText("Indication");
+
+        tf_med_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_stockActionPerformed(evt);
+                tf_med_nameActionPerformed(evt);
             }
         });
+
+        tf_manufacturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_manufacturerActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Manufacturer");
+
+        jLabel4.setText("Generic Name");
+
+        tf_indication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_indicationActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("In Stock");
 
         combo_box_dosage_form.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Select one]", "Tablet", "Syrup", "Injection", "Capsule", "Others" }));
         combo_box_dosage_form.addActionListener(new java.awt.event.ActionListener() {
@@ -77,177 +105,265 @@ public class Frame_Admin_Add extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Generic Name");
-
         jLabel7.setText("Dosage Form");
 
-        jLabel5.setText("Manufacturer");
+        jLabel2.setText("Medicine Name");
 
-        tf_manufacturer.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setText("Strength");
+
+        tf_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_manufacturerActionPerformed(evt);
+                tf_stockActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Indication");
-
-        jLabel3.setText("Brand Name");
-
-        jLabel8.setText("Price");
-
-        ta_indication.setColumns(20);
-        ta_indication.setRows(5);
-        jScrollPane2.setViewportView(ta_indication);
-
-        tf_med_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_med_nameActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_generic_name))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_med_name))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_manufacturer)
+                            .addComponent(tf_indication, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_price))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_strength)
+                            .addComponent(combo_box_dosage_form, 0, 141, Short.MAX_VALUE)
+                            .addComponent(tf_stock)))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_med_name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_strength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_generic_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(combo_box_dosage_form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_manufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_indication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(tf_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_med_name, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tf_generic_name, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                    .addComponent(tf_manufacturer, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                    .addComponent(tf_brand_name))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel11))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(button_add)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(tf_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(tf_strength, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(combo_box_dosage_form, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(tf_price, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(button_add)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(button_back_admin))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))))
-                        .addGap(95, 95, 95))))
+                                .addComponent(button_back_admin)))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_strength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(combo_box_dosage_form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel3)
-                            .addComponent(tf_brand_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_generic_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel9)
-                            .addComponent(tf_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_manufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(tf_med_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(button_back_admin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(button_add)))
-                .addGap(37, 37, 37))
+                .addGap(27, 27, 27)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_add)
+                    .addComponent(button_back_admin))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void switchFrame() {
+        adminpanel.setVisible(true);
+        this.setVisible(false);
+    }
 
-    private void combo_box_dosage_formActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_box_dosage_formActionPerformed
+    private void button_back_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_adminActionPerformed
+        clearFields();
+        switchFrame();
+    }//GEN-LAST:event_button_back_adminActionPerformed
 
-    }//GEN-LAST:event_combo_box_dosage_formActionPerformed
+    public void clearFields() {
+        tf_med_name.setText("");
+        tf_manufacturer.setText("");
+        tf_generic_name.setText("");
+        combo_box_dosage_form.setSelectedIndex(0);
+        tf_strength.setText("");
+        tf_price.setText("");
+        tf_stock.setText("");
+        tf_indication.setText("");
+    }
+
+    public void arrayListFile(String medsArray[]) {
+        String medName = medsArray[0];
+        String manuFacturer = medsArray[1];
+        String genericName = medsArray[2];
+        String dosageForm = medsArray[3];
+        String strength = medsArray[4];
+        double price = -1;
+        try {
+            price = Double.parseDouble(medsArray[5]);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Price not valid!");
+        }
+        int stock = -1;
+        try {
+            stock = Integer.parseInt(medsArray[6]);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Stock Amount not Valid!");
+        }
+        String indication = medsArray[7];
+        meds.add(new Medicine(medName, manuFacturer, genericName, dosageForm, strength, price, stock, indication));
+    }
+
+    private void readFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("MedInfo.txt"));
+            String line;
+            try {
+                while ((line = br.readLine()) != null) {
+
+                    String medsArray[] = line.split("\t");
+                    arrayListFile(medsArray);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            br.close();
+            for (var x : meds) {
+                x.display();
+                //System.out.println("this");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void init() {
+        readFile();
+    }
+
+    private void button_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addActionPerformed
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("MedInfo.txt"));
+
+            for (Medicine m : meds) {
+                m.display();
+            }
+            String medName = tf_med_name.getText();
+            String manuFacturer = tf_manufacturer.getText();
+            String genericName = tf_generic_name.getText();
+            String dosageForm = combo_box_dosage_form.getSelectedItem().toString();
+            String strength = tf_strength.getText();
+            double price = -1;
+            try {
+                price = Double.parseDouble(tf_price.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Please Enter Valid Price!");
+            }
+            int stock = -1;
+            try {
+                stock = Integer.parseInt(tf_stock.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Please Enter Valid Stock Amount!");
+            }
+            String indication = tf_indication.getText();
+            if (tf_med_name.getText().isEmpty() || tf_manufacturer.getText().isEmpty() || tf_generic_name.getText().isEmpty() || combo_box_dosage_form.getSelectedIndex() == 0 || tf_strength.getText().isEmpty() || tf_price.getText().isEmpty() || tf_stock.getText().isEmpty() || tf_indication.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Enter All Fields!");
+            } else {
+                meds.add(new Medicine(medName, manuFacturer, genericName, dosageForm, strength, price, stock, indication));
+                for (Medicine m : meds) {
+                    bw.write(m.getMedName() + "\t" + m.getManuFacturer() + "\t" + m.getGenericName() + "\t" + m.getDosageForm() + "\t"
+                            + m.getStrength() + "\t" + m.getPrice() + "\t" + m.getStock() + "\t" + m.getIndication());
+                    bw.newLine();
+                }
+            }
+
+            bw.close();
+        } catch (IOException io) {
+            JOptionPane.showMessageDialog(this, "Something Wrong with Writing in File!");
+        }
+        for (Medicine m : meds) {
+            m.display();
+        }
+        clearFields();
+    }//GEN-LAST:event_button_addActionPerformed
 
     private void tf_strengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_strengthActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_strengthActionPerformed
 
-    public void switchFrame() {
-        adminpanel.setVisible(true);
-        this.setVisible(false);
-    }
-    private void button_back_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_adminActionPerformed
-        switchFrame();
-    }//GEN-LAST:event_button_back_adminActionPerformed
+    private void tf_med_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_med_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_med_nameActionPerformed
 
     private void tf_manufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_manufacturerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_manufacturerActionPerformed
 
-    private void tf_med_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_med_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_med_nameActionPerformed
+    private void combo_box_dosage_formActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_box_dosage_formActionPerformed
+
+    }//GEN-LAST:event_combo_box_dosage_formActionPerformed
 
     private void tf_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_stockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_stockActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void tf_indicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_indicationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_indicationActionPerformed
+
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -287,17 +403,15 @@ public class Frame_Admin_Add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea ta_indication;
-    private javax.swing.JTextField tf_brand_name;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField tf_generic_name;
+    private javax.swing.JTextField tf_indication;
     private javax.swing.JTextField tf_manufacturer;
     private javax.swing.JTextField tf_med_name;
     private javax.swing.JTextField tf_price;

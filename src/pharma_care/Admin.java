@@ -1,13 +1,16 @@
 package pharma_care;
+
 import java.util.*;
 
-public class Admin extends Person
-{
-    String password;
+public class Admin extends Person {
+
+    String password, code;
+    ArrayList<Order> receipt = new ArrayList<>();
 
     public Admin(String name, String password) {
         super(name);
         this.password = password;
+        this.code = code;
     }
 
     public String getPassword() {
@@ -17,9 +20,18 @@ public class Admin extends Person
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public void displayReceipt(ArrayList<User> receipt, int i)
-    {
-        
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void displayReceipt() {
+        for (Order o : receipt) {
+            o.display();
+        }
     }
 }

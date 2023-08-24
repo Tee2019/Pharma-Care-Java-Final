@@ -1,9 +1,11 @@
 package pharma_care;
+
 import java.util.*;
 
-public class User extends Person
-{
+public class User extends Person {
+
     private String address, contactNumber;
+    private Order order;
 
     public User(String name, String address, String contactNumber) {
         super(name);
@@ -26,9 +28,8 @@ public class User extends Person
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-    
-    public void displayReceipt(ArrayList<User> receipt, int i)
-    {
-        
+
+    public void displayReceipt() {
+        order.display();
     }
 }
